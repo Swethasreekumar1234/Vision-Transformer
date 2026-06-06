@@ -1,0 +1,13 @@
+# Model weights
+*.pt
+*.pth
+
+# YOLO outputs
+runs/
+
+# Dataset
+SDO_Sunspots_Extracted/
+
+# Python cache
+__pycache__/
+*.pyc

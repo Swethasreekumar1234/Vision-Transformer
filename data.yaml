@@ -1,0 +1,7 @@
+names:
+- Sunspots
+nc: 1
+path: SDO_Sunspots_Extracted
+test: test
+train: train
+val: valid

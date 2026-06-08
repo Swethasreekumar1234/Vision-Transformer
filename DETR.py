@@ -26,7 +26,7 @@ from tqdm import tqdm
 # ============================================================
 
 # path to your dataset folder
-DATA_DIR = 'SDO_Sunspots_Extracted'
+DATA_DIR = '/content'
 
 # number of full passes through training data
 EPOCHS = 10

@@ -32,10 +32,10 @@ DATA_DIR = '/content'
 EPOCHS = 10
 
 # number of images processed together in one step
-BATCH_SIZE = 4
+BATCH_SIZE = 2
 
 # image size — matches your Roboflow export size
-IMG_SIZE = 640
+IMG_SIZE = 1024
 
 # learning rate: how large each weight update step is
 LEARNING_RATE = 1e-4
@@ -198,6 +198,9 @@ model = DetrForObjectDetection.from_pretrained(
 
 # move model to GPU or CPU
 model.to(device)
+for name, param in model.named_parameters():
+    if 'backbone' in name:
+        param.requires_grad = False
 
 # ============================================================
 # STEP 4 — CREATE DATASETS AND DATALOADERS

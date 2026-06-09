@@ -1,24 +1,3 @@
-# ============================================================
-# Vanilla ViT - Vision Transformer (Original)
-# ============================================================
-# ViT (Vision Transformer) was the first paper to apply a
-# pure transformer directly to images with no CNN at all.
-# The idea: split the image into fixed patches, treat each
-# patch like a word token, feed the sequence into a standard
-# BERT-style transformer encoder.
-# "An Image is Worth 16x16 Words" — Dosovitskiy et al. 2020
-#
-# Unlike Swin V2 (local windowed attention) or BEiT V2
-# (masked image modeling pretraining) or DeiT III (better
-# training recipe), Vanilla ViT is the bare original design:
-#   - Global self-attention across all patches
-#   - No shifted windows, no hierarchical feature maps
-#   - No special pretraining strategy
-#   - No distillation
-#
-# This is your baseline transformer — the simplest ViT.
-# For detection: ViT backbone → Faster R-CNN head → boxes
-# ============================================================
 
 import os
 import torch
@@ -41,7 +20,7 @@ from transformers import ViTModel
 # ============================================================
 
 DATA_DIR      = '/content'
-EPOCHS        = 30
+EPOCHS        = 20
 BATCH_SIZE    = 2
 IMG_SIZE      = 1024
 LEARNING_RATE = 1e-4
@@ -283,7 +262,7 @@ trainable_params = [p for p in model.parameters() if p.requires_grad]
 optimizer = torch.optim.AdamW(trainable_params, lr=LEARNING_RATE, weight_decay=1e-4)
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-    optimizer, mode='min', patience=3, factor=0.5
+    optimizer, mode='min', patience=5, factor=0.5
 )
 
 

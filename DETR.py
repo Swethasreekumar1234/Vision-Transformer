@@ -65,7 +65,8 @@ class SunspotDataset(Dataset):
     def __init__(self, split, processor):
         self.split     = split
         self.processor = processor
-        self.img_dir   = os.path.join(DATA_DIR, split)
+        self.img_dir   = os.path.join(DATA_DIR, split,'images')
+        self.label_dir = os.path.join(DATA_DIR,split,'labels')
 
         # check the folder exists
         if not os.path.exists(self.img_dir):
@@ -89,7 +90,7 @@ class SunspotDataset(Dataset):
         image = Image.open(img_path).convert('RGB')
 
         # find the matching YOLO label file (.txt)
-        label_path = os.path.join(self.img_dir, os.path.splitext(img_name)[0] + '.txt')
+        label_path = os.path.join(self.label_dir, os.path.splitext(img_name)[0] + '.txt')
 
         boxes  = []
         labels = []

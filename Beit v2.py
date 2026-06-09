@@ -53,7 +53,8 @@ class SunspotDataset(Dataset):
     def __init__(self, split, processor):
         self.split     = split
         self.processor = processor
-        self.img_dir   = os.path.join(DATA_DIR, split)
+        self.img_dir   = os.path.join(DATA_DIR, split,'images')
+        self.label_dir = os.path.join(DATA_DIR,split,'labels')
 
         if not os.path.exists(self.img_dir):
             raise FileNotFoundError(f"Directory not found: {self.img_dir}")
@@ -75,7 +76,7 @@ class SunspotDataset(Dataset):
         # so we use to_tensor here and let the backbone handle normalization
         image_tensor = torchvision.transforms.functional.to_tensor(image)
 
-        label_path = os.path.join(self.img_dir, os.path.splitext(img_name)[0] + '.txt')
+        label_path = os.path.join(self.label_dir, os.path.splitext(img_name)[0] + '.txt')
 
         boxes  = []
         labels = []

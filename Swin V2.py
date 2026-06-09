@@ -35,7 +35,7 @@ from torchvision.ops import MultiScaleRoIAlign
 # ============================================================
 
 DATA_DIR      = '/content'         # root folder with train/ valid/ test/
-EPOCHS        = 30                 # number of full passes through training data
+EPOCHS        = 20                 # number of full passes through training data
 BATCH_SIZE    = 2                  # images per batch — keep low for 1024px images
 IMG_SIZE      = 1024               # must match your Roboflow export size
 LEARNING_RATE = 1e-4               # standard fine-tuning LR for transformers
@@ -256,7 +256,7 @@ trainable_params = [p for p in model.parameters() if p.requires_grad]
 optimizer = torch.optim.AdamW(trainable_params, lr=LEARNING_RATE, weight_decay=1e-4)
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-    optimizer, mode='min', patience=3, factor=0.5
+    optimizer, mode='min', patience=5, factor=0.5
 )
 
 

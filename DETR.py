@@ -29,7 +29,7 @@ from tqdm import tqdm
 DATA_DIR = '/content'
 
 # number of full passes through training data
-EPOCHS = 10
+EPOCHS = 30
 
 # number of images processed together in one step
 BATCH_SIZE = 2

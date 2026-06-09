@@ -32,7 +32,7 @@ from transformers import BeitModel, AutoImageProcessor
 # ============================================================
 
 DATA_DIR      = '/content'
-EPOCHS        = 30
+EPOCHS        = 20
 BATCH_SIZE    = 2
 IMG_SIZE      = 1024
 LEARNING_RATE = 1e-4
@@ -272,7 +272,7 @@ trainable_params = [p for p in model.parameters() if p.requires_grad]
 optimizer = torch.optim.AdamW(trainable_params, lr=LEARNING_RATE, weight_decay=1e-4)
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-    optimizer, mode='min', patience=3, factor=0.5
+    optimizer, mode='min', patience=5, factor=0.5
 )
 
 

@@ -57,7 +57,8 @@ print(f"Using device: {device}")
 class SunspotDataset(Dataset):
     def __init__(self, split):
         self.split   = split
-        self.img_dir = os.path.join(DATA_DIR, split)
+        self.img_dir = os.path.join(DATA_DIR, split,'images')
+        self.label_dir=os.path.join(DATA_DIR,split,'labels')
 
         if not os.path.exists(self.img_dir):
             raise FileNotFoundError(f"Directory not found: {self.img_dir}")
@@ -80,7 +81,7 @@ class SunspotDataset(Dataset):
         image_tensor = torchvision.transforms.functional.to_tensor(image)
 
         # find matching YOLO label file
-        label_path = os.path.join(self.img_dir, os.path.splitext(img_name)[0] + '.txt')
+        label_path = os.path.join(self.label_dir, os.path.splitext(img_name)[0] + '.txt')
 
         boxes  = []
         labels = []

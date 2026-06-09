@@ -1,7 +1,6 @@
-names:
-- Sunspots
+names: ['Sunspots']
 nc: 1
-path: SDO_Sunspots_Extracted
-test: test
-train: train
-val: valid
+
+test: /content/test/images
+train: /content/train/images
+val: /content/valid/images

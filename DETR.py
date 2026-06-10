@@ -235,7 +235,7 @@ scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
 # ============================================================
 # STEP 6 — TRAINING LOOP WITH VALIDATION
 # ============================================================
-
+"""
 print(f"Starting DETR training for {EPOCHS} epochs...")
 
 train_losses = []   # track training loss per epoch
@@ -319,7 +319,7 @@ for epoch in range(EPOCHS):
 # STEP 7 — TESTING
 # Run on held-out test set after all training is complete
 # ============================================================
-
+"""
 print("\nRunning on test set...")
 
 # load the best saved model weights for testing
@@ -432,6 +432,7 @@ def compute_metrics(predictions, targets, iou_threshold=0.5):
 
 
 # compute metrics on test set predictions
+
 metrics = compute_metrics(all_predictions, all_targets_boxes)
 
 print("\n========== DETR RESULTS ==========")
